@@ -1,6 +1,9 @@
 .app {
   &__form {
     max-width: 290px;
+    display: flex;
+    gap: 5px;
+    position: relative;
   }
 
   &__textarea {
@@ -30,6 +33,23 @@
     &::-webkit-scrollbar-thumb {
       background: #dae2ea;
       border-radius: 3px;
+    }
+  }
+
+  &__emoji-list {
+    position: absolute;
+    top: -25px;
+    right: 0px;
+    transition: visibility 15s ease;
+  }
+
+  &__emoji-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 0px 4px 4px 4px;
+
+    &:hover {
+      cursor: pointer;
     }
   }
 }
