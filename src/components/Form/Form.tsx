@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import emojiGroups from "/public/emoji/emoji";
 import IEmojiGroup from "/src/types/types";
 import "./Form.scss";
+import EmojiSection from "../EmojiSection/EmojiSection";
 
 type visibilityType = "visible" | "hidden" | "collapse";
 
 function Form() {
   const [emojiListVisibility, setEmojiListVisibility] =
-    useState<visibilityType>("hidden");
+    useState<visibilityType>("visible");
 
   const [emojiList, setEmojiList] = useState<IEmojiGroup[]>([]);
 
@@ -25,7 +26,7 @@ function Form() {
         }}
       >
         {emojiList.map((item, index) => (
-          <span key={index}> '1'</span>
+          <EmojiSection key={index} title={item.title} list={item.items} />
         ))}
       </div>
       <img

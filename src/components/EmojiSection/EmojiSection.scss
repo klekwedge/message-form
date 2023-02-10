@@ -1,0 +1,26 @@
+.app__emoji-section {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 5px;
+
+
+//   & .app__emoji-section-list{
+ 
+//   }
+
+  & h2 {
+    font-family: "SF Pro Text";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    color: #939393;
+    margin-bottom: 3px;
+  }
+
+  & span {
+    // flex: 1 1 10%;
+    cursor: pointer;
+  }
+}
+
