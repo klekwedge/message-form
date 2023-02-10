@@ -5,10 +5,14 @@ import "./Form.scss";
 import EmojiSection from "../EmojiSection/EmojiSection";
 
 type visibilityType = "visible" | "hidden" | "collapse";
+type tabType = "all" | "recent";
 
 function Form() {
   const [emojiListVisibility, setEmojiListVisibility] =
     useState<visibilityType>("visible");
+
+  const [activeTab, setActiveTab] = useState<tabType>("all");
+  const [recentEmoji, setRecentEmoji] = useState([]);
 
   const [emojiList, setEmojiList] = useState<IEmojiGroup[]>([]);
 
@@ -27,13 +31,38 @@ function Form() {
         className="app__emoji-block"
       >
         <div className="app__emoji-list">
-          {emojiList.map((item, index) => (
-            <EmojiSection key={index} title={item.title} list={item.items} />
-          ))}
+          {activeTab === "all" ? (
+            emojiList.map((item, index) => (
+              <EmojiSection key={index} title={item.title} list={item.items} />
+            ))
+          ) : (
+            <div style={{ height: "246px" }}>
+              <h2
+                style={{
+                  fontStyle: "normal",
+                  fontWeight: 400,
+                  fontSize: "13px",
+                  lineHeight: "15px",
+                  color: "#939393",
+                }}
+              >
+                Часто используемые
+              </h2>
+            </div>
+          )}
         </div>
+
         <div className="app__emoji-tabs">
-          <img className="_active" src='/public/svg/emoji-icon.svg'/>
-          <img src='/public/svg/time-icon.svg'/>
+          <img
+            className={activeTab === "all" ? "_active" : ""}
+            onClick={() => setActiveTab("all")}
+            src="/public/svg/emoji-icon.svg"
+          />
+          <img
+            className={activeTab === "recent" ? "_active" : ""}
+            onClick={() => setActiveTab("recent")}
+            src="/public/svg/time-icon.svg"
+          />
         </div>
         <div className="app__emoji-dec"></div>
       </div>
