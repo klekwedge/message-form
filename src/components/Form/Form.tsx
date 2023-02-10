@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import emojiGroups from "/public/emoji/emoji";
 import IEmojiGroup from "/src/types/types";
 import "./Form.scss";
@@ -11,6 +11,8 @@ function Form() {
   const [emojiListVisibility, setEmojiListVisibility] =
     useState<visibilityType>("visible");
 
+  const textArea = useRef(null);
+
   const [textAreaValue, setTextAreaValue] = useState("");
   const [activeTab, setActiveTab] = useState<tabType>("all");
   const [recentEmoji, setRecentEmoji] = useState([]);
@@ -20,7 +22,13 @@ function Form() {
   }
 
   function addEmoji(emoji: string) {
-    setTextAreaValue((value) => value + emoji);
+    if (textArea.current) {
+      const pos = textArea.current.selectionStart;
+      console.log(pos);
+      setTextAreaValue(
+        (value) => value.slice(0, pos) + emoji + value.slice(pos + 1)
+      );
+    }
   }
 
   const [emojiList, setEmojiList] = useState<IEmojiGroup[]>([]);
@@ -29,11 +37,10 @@ function Form() {
     setEmojiList(emojiGroups);
   }, []);
 
-  console.log(textAreaValue);
-
   return (
     <form className="app__form">
       <textarea
+        ref={textArea}
         className="app__textarea"
         placeholder="Ваше сообщение"
         value={textAreaValue}

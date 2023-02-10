@@ -32,16 +32,18 @@
 
   &__emoji-block {
     transition: all 0.4s ease;
-  }
-
-  &__emoji-list {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: -295px;
     left: 0px;
+  }
+
+  &__emoji-list {
 
     padding: 10px 5px;
     width: 290px;
-    max-height: 280px;
+    max-height: 245px;
 
     background: #ffffff;
     border: 1px solid #c5d0db;
@@ -91,7 +93,6 @@
   }
 
   &__emoji-tabs {
-    position: absolute;
     z-index: 5;
     bottom: 68px;
     left: 0;
