@@ -1,8 +1,5 @@
 .app {
   &__form {
-    max-width: 290px;
-    display: flex;
-    gap: 5px;
     position: absolute;
     bottom: 100px;
     left: 50%;
@@ -85,7 +82,7 @@
 
   &__emoji-dec {
     position: absolute;
-    right: 3px;
+    right: 10px;
     bottom: 56px;
     background: transparent;
     border-radius: 2px;

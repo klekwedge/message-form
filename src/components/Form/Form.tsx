@@ -11,8 +11,17 @@ function Form() {
   const [emojiListVisibility, setEmojiListVisibility] =
     useState<visibilityType>("visible");
 
+  const [textAreaValue, setTextAreaValue] = useState("");
   const [activeTab, setActiveTab] = useState<tabType>("all");
   const [recentEmoji, setRecentEmoji] = useState([]);
+
+  function changeTextAreaValue(e: React.FormEvent<HTMLTextAreaElement>) {
+    setTextAreaValue(e.target.value);
+  }
+
+  function addEmoji(emoji: string) {
+    setTextAreaValue((value) => value + emoji);
+  }
 
   const [emojiList, setEmojiList] = useState<IEmojiGroup[]>([]);
 
@@ -20,9 +29,16 @@ function Form() {
     setEmojiList(emojiGroups);
   }, []);
 
+  console.log(textAreaValue);
+
   return (
     <form className="app__form">
-      <textarea className="app__textarea" placeholder="Ваше сообщение" />
+      <textarea
+        className="app__textarea"
+        placeholder="Ваше сообщение"
+        value={textAreaValue}
+        onInput={(e) => changeTextAreaValue(e)}
+      />
 
       <div
         style={{
@@ -33,7 +49,12 @@ function Form() {
         <div className="app__emoji-list">
           {activeTab === "all" ? (
             emojiList.map((item, index) => (
-              <EmojiSection key={index} title={item.title} list={item.items} />
+              <EmojiSection
+                key={index}
+                title={item.title}
+                list={item.items}
+                addEmoji={addEmoji}
+              />
             ))
           ) : (
             <div style={{ height: "246px" }}>
