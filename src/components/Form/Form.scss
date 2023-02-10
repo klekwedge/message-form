@@ -2,8 +2,8 @@
   &__form {
     position: absolute;
     bottom: 100px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 20%;
+    transform: translateX(-20%);
   }
 
   &__textarea {
@@ -31,24 +31,22 @@
   }
 
   &__emoji-block {
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     position: absolute;
     top: -295px;
     left: 0px;
-  }
-
-  &__emoji-list {
-
-    padding: 10px 5px;
-    width: 290px;
-    max-height: 245px;
-
     background: #ffffff;
     border: 1px solid #c5d0db;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
+  }
+
+  &__emoji-list {
+    padding: 10px 5px;
+    width: 290px;
+    max-height: 245px;
 
     overflow: hidden;
     overflow-y: scroll;
@@ -70,12 +68,11 @@
   &__emoji-icon {
     width: 20px;
     height: 20px;
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
     border-radius: 0px 4px 4px 4px;
     position: absolute;
     right: 8px;
     top: 8px;
-
 
     &:hover {
       cursor: pointer;
@@ -85,7 +82,7 @@
   &__emoji-dec {
     position: absolute;
     right: 10px;
-    bottom: 56px;
+    bottom: -13px;
     background: transparent;
     border-radius: 2px;
     border: 7px solid transparent;
@@ -93,9 +90,6 @@
   }
 
   &__emoji-tabs {
-    z-index: 5;
-    bottom: 68px;
-    left: 0;
     background: #ebeef2;
     border-radius: 0px 0px 4px 4px;
     width: 100%;

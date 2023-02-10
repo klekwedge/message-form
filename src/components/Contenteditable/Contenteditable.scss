@@ -1,0 +1,13 @@
+.app {
+  &__contenteditable {
+    position: absolute;
+    bottom: 100px;
+    left: 75%;
+    transform: translateX(-75%);
+  }
+}
+
+
+.hashtag {
+  color: #2A5885;
+}

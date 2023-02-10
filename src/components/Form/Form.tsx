@@ -16,6 +16,7 @@ function Form() {
   const [textAreaValue, setTextAreaValue] = useState("");
   const [activeTab, setActiveTab] = useState<tabType>("all");
   const [recentEmoji, setRecentEmoji] = useState([]);
+  const [textAreaRows, setTextAreaRows] = useState(1);
 
   function changeTextAreaValue(e: React.FormEvent<HTMLTextAreaElement>) {
     setTextAreaValue(e.target.value);
@@ -24,10 +25,11 @@ function Form() {
   function addEmoji(emoji: string) {
     if (textArea.current) {
       const pos = textArea.current.selectionStart;
-      console.log(pos);
-      setTextAreaValue(
-        (value) => value.slice(0, pos) + emoji + value.slice(pos + 1)
-      );
+      setTextAreaValue((value) => value + emoji);
+
+      // setTextAreaValue(
+      //   (value) => value.slice(0, pos) + emoji + value.slice(pos + 1)
+      // );
     }
   }
 
@@ -37,6 +39,13 @@ function Form() {
     setEmojiList(emojiGroups);
   }, []);
 
+  // useEffect(() => {
+
+  //   // if (textArea.current) {
+  //   //   textArea.current.setSelectionRange(2, 2);
+  //   // }
+  // }, [textAreaValue]);
+
   return (
     <form className="app__form">
       <textarea
@@ -45,13 +54,17 @@ function Form() {
         placeholder="Ваше сообщение"
         value={textAreaValue}
         onInput={(e) => changeTextAreaValue(e)}
-      />
+        rows={textAreaRows}
+      >
+        <span>FFFFFFFF</span>
+      </textarea>
 
       <div
         style={{
           visibility: `${emojiListVisibility}`,
         }}
         className="app__emoji-block"
+        onMouseLeave={() => setEmojiListVisibility("hidden")}
       >
         <div className="app__emoji-list">
           {activeTab === "all" ? (
@@ -97,7 +110,6 @@ function Form() {
       <img
         className="app__emoji-icon"
         onMouseOver={() => setEmojiListVisibility("visible")}
-        onMouseLeave={() => setEmojiListVisibility("hidden")}
         src="/public/svg/emoji-icon.svg"
       />
     </form>
