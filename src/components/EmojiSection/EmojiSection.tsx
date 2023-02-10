@@ -11,11 +11,7 @@ function EmojiSection({ title, list }: EmojiSectionProps) {
       <h2>{title}</h2>
       <div className="app__emoji-section-list">
         {list.map((item) => (
-          <span
-            style={{ width: "22px", height: "22px", display: "inline-block" }}
-          >
-            {item}
-          </span>
+          <span>{item}</span>
         ))}
       </div>
     </div>

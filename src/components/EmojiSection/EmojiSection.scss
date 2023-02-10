@@ -1,12 +1,7 @@
 .app__emoji-section {
   display: flex;
   flex-direction: column;
-  padding: 10px 5px;
-
-
-//   & .app__emoji-section-list{
- 
-//   }
+  padding: 10px;
 
   & h2 {
     font-family: "SF Pro Text";
@@ -17,10 +12,18 @@
     color: #939393;
     margin-bottom: 3px;
   }
+  & .app__emoji-section-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 
   & span {
-    // flex: 1 1 10%;
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    flex: 1 1 10%;
     cursor: pointer;
+    gap: 5px;
   }
 }
-

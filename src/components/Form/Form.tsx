@@ -19,15 +19,23 @@ function Form() {
   return (
     <form className="app__form">
       <textarea className="app__textarea" placeholder="Ваше сообщение" />
+
       <div
-        className="app__emoji-list"
         style={{
           visibility: `${emojiListVisibility}`,
         }}
+        className="app__emoji-block"
       >
-        {emojiList.map((item, index) => (
-          <EmojiSection key={index} title={item.title} list={item.items} />
-        ))}
+        <div className="app__emoji-list">
+          {emojiList.map((item, index) => (
+            <EmojiSection key={index} title={item.title} list={item.items} />
+          ))}
+        </div>
+        <div className="app__emoji-tabs">
+          <img className="_active" src='/public/svg/emoji-icon.svg'/>
+          <img src='/public/svg/time-icon.svg'/>
+        </div>
+        <div className="app__emoji-dec"></div>
       </div>
       <img
         className="app__emoji-icon"
