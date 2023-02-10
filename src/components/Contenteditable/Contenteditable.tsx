@@ -8,12 +8,14 @@ function Contenteditable() {
     if (divRef.current) {
       const text = divRef.current.textContent;
 
-      const hashtag = text.replace(
-        /(#\w+)/g,
-        '<span class="hashtag">$1</span>'
+      const highlight = text.replace(
+        /(#|@|http:\/\/|https:\/\/)\w*/g,
+        (match: string) => {
+          return `<span class="highlight">${match}</span>`;
+        }
       );
 
-      divRef.current.innerHTML = hashtag;
+      divRef.current.innerHTML = highlight;
       placeCaretAtEnd();
     }
   }
@@ -55,7 +57,7 @@ function Contenteditable() {
   return (
     <div className="app__contenteditable">
       <div ref={divRef} className="app__textarea" contentEditable="true">
-        Example
+        See
       </div>
 
       <div className="app__emoji-block"></div>
