@@ -4,10 +4,13 @@
     bottom: 100px;
     left: 75%;
     transform: translateX(-75%);
+
+    .app__textarea {
+      max-height: 190px;
+    }
   }
 }
 
-
 .highlight {
-  color: #2A5885;
+  color: #2a5885;
 }

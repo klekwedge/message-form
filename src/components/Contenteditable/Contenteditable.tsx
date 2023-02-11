@@ -43,6 +43,7 @@ function Contenteditable() {
         className="app__textarea"
         contentEditable="true"
         onKeyUp={(e) => changeContenteditableValue(e)}
+        
       >
         See
       </div>

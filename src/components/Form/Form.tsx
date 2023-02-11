@@ -9,18 +9,26 @@ type visibilityType = "visible" | "hidden" | "collapse";
 type tabType = "all" | "recent";
 
 function Form() {
-  const [emojiListVisibility, setEmojiListVisibility] =
-    useState<visibilityType>("visible");
-
   const textArea = useRef(null);
 
-  const [textAreaValue, setTextAreaValue] = useState("");
+  const [emojiListVisibility, setEmojiListVisibility] =
+    useState<visibilityType>("visible");
+  const [emojiList, setEmojiList] = useState<IEmojiGroup[]>([]);
   const [activeTab, setActiveTab] = useState<tabType>("all");
-  const [recentEmoji, setRecentEmoji] = useState([]);
-  const [textAreaRows, setTextAreaRows] = useState(1);
+
+  const [textAreaValue, setTextAreaValue] = useState("");
+  const [recentEmoji, setRecentEmoji] = useState<string[]>([]);
 
   function changeTextAreaValue(e: React.FormEvent<HTMLTextAreaElement>) {
     setTextAreaValue(e.target.value);
+  }
+
+  function addRecentEmoji(emoji: string) {
+    setRecentEmoji([emoji, ...recentEmoji]);
+  }
+
+  function replaceRecentEmoji(emoji: string) {
+    setRecentEmoji([emoji, ...recentEmoji.slice(0, recentEmoji.length - 1)]);
   }
 
   function addEmoji(emoji: string) {
@@ -31,10 +39,21 @@ function Form() {
       // setTextAreaValue(
       //   (value) => value.slice(0, pos) + emoji + value.slice(pos + 1)
       // );
+
+      console.log(emoji);
+
+      if (
+        recentEmoji.length <= 20 &&
+        !recentEmoji.find((item) => item === emoji)
+      ) {
+        addRecentEmoji(emoji);
+      } else {
+        replaceRecentEmoji(emoji);
+      }
     }
   }
 
-  const [emojiList, setEmojiList] = useState<IEmojiGroup[]>([]);
+  console.log(recentEmoji);
 
   useEffect(() => {
     setEmojiList(emojiGroups);
@@ -55,7 +74,6 @@ function Form() {
         placeholder="Ваше сообщение"
         value={textAreaValue}
         onInput={(e) => changeTextAreaValue(e)}
-        rows={textAreaRows}
       >
         <span>FFFFFFFF</span>
       </textarea>
@@ -78,7 +96,7 @@ function Form() {
               />
             ))
           ) : (
-            <div style={{ height: "246px" }}>
+            <div className="app__emoji-section" style={{ height: "246px" }}>
               <h2
                 style={{
                   fontStyle: "normal",
@@ -90,6 +108,11 @@ function Form() {
               >
                 Часто используемые
               </h2>
+              <div className="app__emoji-section-list">
+                {recentEmoji.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
             </div>
           )}
         </div>
