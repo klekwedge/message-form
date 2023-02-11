@@ -40,14 +40,12 @@ function Form() {
       //   (value) => value.slice(0, pos) + emoji + value.slice(pos + 1)
       // );
 
-      console.log(emoji);
-
       if (
-        recentEmoji.length <= 20 &&
+        recentEmoji.length < 20 &&
         !recentEmoji.find((item) => item === emoji)
       ) {
         addRecentEmoji(emoji);
-      } else {
+      } else if (!recentEmoji.find((item) => item === emoji)) {
         replaceRecentEmoji(emoji);
       }
     }
