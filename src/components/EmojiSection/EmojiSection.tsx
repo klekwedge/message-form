@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import "./EmojiSection.scss";
 
 interface EmojiSectionProps {
@@ -12,7 +13,7 @@ function EmojiSection({ title, list, addEmoji }: EmojiSectionProps) {
       <h2>{title}</h2>
       <div className="app__emoji-section-list">
         {list.map((item) => (
-          <span onClick={() => addEmoji(item)}>{item}</span>
+          <span key={uuidv4()} onClick={() => addEmoji(item)}>{item}</span>
         ))}
       </div>
     </div>

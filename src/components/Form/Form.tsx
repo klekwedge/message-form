@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import emojiGroups from "/public/emoji/emoji";
 import IEmojiGroup from "/src/types/types";
 import "./Form.scss";
@@ -70,7 +71,7 @@ function Form() {
           {activeTab === "all" ? (
             emojiList.map((item, index) => (
               <EmojiSection
-                key={index}
+                key={uuidv4()}
                 title={item.title}
                 list={item.items}
                 addEmoji={addEmoji}

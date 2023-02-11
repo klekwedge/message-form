@@ -2,61 +2,48 @@ import { useEffect, useRef, useState } from "react";
 import "./Contenteditable.scss";
 
 function Contenteditable() {
-  const divRef = useRef(null);
+  function changeContenteditableValue(e) {
+    const text = e.target.textContent;
 
-  function changeContenteditableValue() {
-    if (divRef.current) {
-      const text = divRef.current.textContent;
-
-      const highlight = text.replace(
-        /(#|@|http:\/\/|https:\/\/)\w*/g,
-        (match: string) => {
-          return `<span class="highlight">${match}</span>`;
-        }
-      );
-
-      divRef.current.innerHTML = highlight;
-      placeCaretAtEnd();
-    }
-  }
-
-  useEffect(() => {
-    if (divRef.current) {
-      divRef.current.addEventListener("keyup", changeContenteditableValue);
-    }
-
-    return () => {
-      if (divRef.current) {
-        divRef.current.removeEventListener(changeContenteditableValue);
+    const highlight = text.replace(
+      /(#|@|http:\/\/|https:\/\/)\w*/g,
+      (match: string) => {
+        return `<span class="highlight">${match}</span>`;
       }
-    };
-  }, [divRef]);
+    );
 
-  function placeCaretAtEnd() {
-    if (divRef.current) {
-      divRef.current.focus();
-      if (
-        typeof window.getSelection != "undefined" &&
-        typeof document.createRange != "undefined"
-      ) {
-        const range = document.createRange();
-        range.selectNodeContents(divRef.current);
-        range.collapse(false);
-        const sel = window.getSelection();
-        sel.removeAllRanges();
-        sel.addRange(range);
-      } else if (typeof document.body.createTextRange != "undefined") {
-        var textRange = document.body.createTextRange();
-        textRange.moveToElementText(divRef.current);
-        textRange.collapse(false);
-        textRange.select();
+    const parent = e.target;
+
+    let selection = document.getSelection();
+    let range = new Range();
+    range.setStart(parent, 0);
+    range.setEnd(selection.anchorNode, selection.anchorOffset);
+
+    let pos = range.toString().length;
+
+    e.target.innerHTML = highlight;
+
+    let child = parent.firstChild;
+    while (pos > 0) {
+      let length = child.textContent.length;
+      if (pos > length) {
+        pos -= length;
+        child = child.nextSibling;
+      } else {
+        if (child.nodeType == 3)
+          return document.getSelection().collapse(child, pos);
+        child = child.firstChild;
       }
     }
   }
 
   return (
     <div className="app__contenteditable">
-      <div ref={divRef} className="app__textarea" contentEditable="true">
+      <div
+        className="app__textarea"
+        contentEditable="true"
+        onKeyUp={(e) => changeContenteditableValue(e)}
+      >
         See
       </div>
 
