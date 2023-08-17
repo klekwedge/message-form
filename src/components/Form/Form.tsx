@@ -1,19 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import emojiGroups from '/public/emoji/emoji';
-import IEmojiGroup from '/src/types/types';
+import emojiGroups from "../../../public/emoji/emoji";
+import IEmojiGroup from "../../types/types";
 import './Form.scss';
 import EmojiSection from '../EmojiSection/EmojiSection';
 
-type visibilityType = 'visible' | 'hidden' | 'collapse';
-type tabType = 'all' | 'recent';
+type VisibilityType = 'visible' | 'hidden' | 'collapse';
+type TabType = 'all' | 'recent';
 
 function Form() {
   const textArea = useRef(null);
 
-  const [emojiListVisibility, setEmojiListVisibility] = useState<visibilityType>('visible');
+  const [emojiListVisibility, setEmojiListVisibility] = useState<VisibilityType>('visible');
   const [emojiList, setEmojiList] = useState<IEmojiGroup[]>([]);
-  const [activeTab, setActiveTab] = useState<tabType>('all');
+  const [activeTab, setActiveTab] = useState<TabType>('all');
 
   const [textAreaValue, setTextAreaValue] = useState('');
   const [recentEmoji, setRecentEmoji] = useState<string[]>([]);
@@ -118,7 +118,7 @@ function Form() {
             src="/public/svg/time-icon.svg"
           />
         </div>
-        <div className="app__emoji-dec"></div>
+        <div className="app__emoji-dec" />
       </div>
       <img
         className="app__emoji-icon"

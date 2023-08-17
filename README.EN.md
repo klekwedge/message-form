@@ -23,6 +23,20 @@
 
 ## Overview
 
+### Exercise
+![Input field with expanded emoji picker interface](preview/emojipicker_expanded.png)
+
+We need to develop an input field with an interface for adding emoji.
+
+- The input field should resize to fit the entered text.
+- When you click on the icon on the right, a drop-down emoji selection interface should open.
+- In the emoji selection interface, there are 2 icons at the bottom. They switch the view mode between the entire list and recently used emojis (you can remember, for example, the last 25 used).
+
+### Additional task
+![Input field with highlighted elements](preview/emojipicker_filled.png)
+
+You can do an additional task: find and highlight menus, hashtags, links and email addresses in the input field.
+
 ### Screenshot
 
 ![Main screen](./preview/screenshot.png)
