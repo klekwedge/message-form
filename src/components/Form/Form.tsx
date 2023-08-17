@@ -1,22 +1,21 @@
-import { useEffect, useRef, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import emojiGroups from "/public/emoji/emoji";
-import IEmojiGroup from "/src/types/types";
-import "./Form.scss";
-import EmojiSection from "../EmojiSection/EmojiSection";
+import { useEffect, useRef, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import emojiGroups from '/public/emoji/emoji';
+import IEmojiGroup from '/src/types/types';
+import './Form.scss';
+import EmojiSection from '../EmojiSection/EmojiSection';
 
-type visibilityType = "visible" | "hidden" | "collapse";
-type tabType = "all" | "recent";
+type visibilityType = 'visible' | 'hidden' | 'collapse';
+type tabType = 'all' | 'recent';
 
 function Form() {
   const textArea = useRef(null);
 
-  const [emojiListVisibility, setEmojiListVisibility] =
-    useState<visibilityType>("visible");
+  const [emojiListVisibility, setEmojiListVisibility] = useState<visibilityType>('visible');
   const [emojiList, setEmojiList] = useState<IEmojiGroup[]>([]);
-  const [activeTab, setActiveTab] = useState<tabType>("all");
+  const [activeTab, setActiveTab] = useState<tabType>('all');
 
-  const [textAreaValue, setTextAreaValue] = useState("");
+  const [textAreaValue, setTextAreaValue] = useState('');
   const [recentEmoji, setRecentEmoji] = useState<string[]>([]);
 
   function changeTextAreaValue(e: React.FormEvent<HTMLTextAreaElement>) {
@@ -40,10 +39,7 @@ function Form() {
       //   (value) => value.slice(0, pos) + emoji + value.slice(pos + 1)
       // );
 
-      if (
-        recentEmoji.length < 20 &&
-        !recentEmoji.find((item) => item === emoji)
-      ) {
+      if (recentEmoji.length < 20 && !recentEmoji.find((item) => item === emoji)) {
         addRecentEmoji(emoji);
       } else if (!recentEmoji.find((item) => item === emoji)) {
         replaceRecentEmoji(emoji);
@@ -81,27 +77,22 @@ function Form() {
           visibility: `${emojiListVisibility}`,
         }}
         className="app__emoji-block"
-        onMouseLeave={() => setEmojiListVisibility("hidden")}
+        onMouseLeave={() => setEmojiListVisibility('hidden')}
       >
         <div className="app__emoji-list">
-          {activeTab === "all" ? (
+          {activeTab === 'all' ? (
             emojiList.map((item, index) => (
-              <EmojiSection
-                key={uuidv4()}
-                title={item.title}
-                list={item.items}
-                addEmoji={addEmoji}
-              />
+              <EmojiSection key={uuidv4()} title={item.title} list={item.items} addEmoji={addEmoji} />
             ))
           ) : (
-            <div className="app__emoji-section" style={{ height: "246px" }}>
+            <div className="app__emoji-section" style={{ height: '246px' }}>
               <h2
                 style={{
-                  fontStyle: "normal",
+                  fontStyle: 'normal',
                   fontWeight: 400,
-                  fontSize: "13px",
-                  lineHeight: "15px",
-                  color: "#939393",
+                  fontSize: '13px',
+                  lineHeight: '15px',
+                  color: '#939393',
                 }}
               >
                 Часто используемые
@@ -117,13 +108,13 @@ function Form() {
 
         <div className="app__emoji-tabs">
           <img
-            className={activeTab === "all" ? "_active" : ""}
-            onClick={() => setActiveTab("all")}
+            className={activeTab === 'all' ? '_active' : ''}
+            onClick={() => setActiveTab('all')}
             src="/public/svg/emoji-icon.svg"
           />
           <img
-            className={activeTab === "recent" ? "_active" : ""}
-            onClick={() => setActiveTab("recent")}
+            className={activeTab === 'recent' ? '_active' : ''}
+            onClick={() => setActiveTab('recent')}
             src="/public/svg/time-icon.svg"
           />
         </div>
@@ -131,7 +122,7 @@ function Form() {
       </div>
       <img
         className="app__emoji-icon"
-        onMouseOver={() => setEmojiListVisibility("visible")}
+        onMouseOver={() => setEmojiListVisibility('visible')}
         src="/public/svg/emoji-icon.svg"
       />
     </form>

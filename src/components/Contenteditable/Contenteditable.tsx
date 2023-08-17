@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import "./Contenteditable.scss";
 
 function Contenteditable() {
@@ -43,7 +43,6 @@ function Contenteditable() {
         className="app__textarea"
         contentEditable="true"
         onKeyUp={(e) => changeContenteditableValue(e)}
-        
       >
         See
       </div>
