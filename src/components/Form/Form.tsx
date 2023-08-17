@@ -1,7 +1,10 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
+/* eslint-disable react/jsx-no-bind */
 import { useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import emojiGroups from "../../../public/emoji/emoji";
-import IEmojiGroup from "../../types/types";
+import emojiGroups from '../../../public/emoji/emoji';
+import { IEmojiGroup } from '../../types/types';
 import './Form.scss';
 import EmojiSection from '../EmojiSection/EmojiSection';
 
@@ -19,7 +22,8 @@ function Form() {
   const [recentEmoji, setRecentEmoji] = useState<string[]>([]);
 
   function changeTextAreaValue(e: React.FormEvent<HTMLTextAreaElement>) {
-    setTextAreaValue(e.target.value);
+    const target = e.target as HTMLTextAreaElement;
+    setTextAreaValue(target.value);
   }
 
   function addRecentEmoji(emoji: string) {
@@ -32,7 +36,7 @@ function Form() {
 
   function addEmoji(emoji: string) {
     if (textArea.current) {
-      const pos = textArea.current.selectionStart;
+      // const pos = textArea.current.selectionStart;
       setTextAreaValue((value) => value + emoji);
 
       // setTextAreaValue(
@@ -108,11 +112,13 @@ function Form() {
 
         <div className="app__emoji-tabs">
           <img
+            alt="emoji"
             className={activeTab === 'all' ? '_active' : ''}
             onClick={() => setActiveTab('all')}
             src="/public/svg/emoji-icon.svg"
           />
           <img
+            alt="recent"
             className={activeTab === 'recent' ? '_active' : ''}
             onClick={() => setActiveTab('recent')}
             src="/public/svg/time-icon.svg"
@@ -121,6 +127,7 @@ function Form() {
         <div className="app__emoji-dec" />
       </div>
       <img
+        alt="emoji"
         className="app__emoji-icon"
         onMouseOver={() => setEmojiListVisibility('visible')}
         src="/public/svg/emoji-icon.svg"

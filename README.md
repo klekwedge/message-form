@@ -50,9 +50,8 @@
 ### Стек
 
 - React
-- Redux Toolkit
 - TypeScript
-- Chakra UI
+- SCSS
 - Vite
 
 ### Что я узнал

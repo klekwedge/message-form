@@ -52,9 +52,8 @@ You can do an additional task: find and highlight menus, hashtags, links and ema
 
 - React
 - TypeScript
-- Redux Toolkit
 - SCSS
-- Chakra UI
+- Vite
 
 ### What I learned
 
