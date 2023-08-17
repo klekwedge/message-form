@@ -1,6 +1,6 @@
 # ВКонтакте - Стажер в команду Веб-мессенджер
 
-**You can also read this README in [English](https://github.com/klekwedge/snake/blob/main/README.EN.md).**
+**You can also read this README in [English](https://github.com/klekwedge/vk-test-2021/blob/main/README.EN.md).**
 
 ## Оглавление
 
@@ -17,7 +17,7 @@
 
 **Для запуска проекта на вашем компьютере должны быть установлены [npm](https://nodejs.org/en/) и [git](https://git-scm.com/downloads)**
 
-1. Сделайте клон этого репозитория ```git clone https://github.com/klekwedge/snake.git```
+1. Сделайте клон этого репозитория ```git clone https://github.com/klekwedge/vk-test-2021.git```
 2. Установите все необходимые пакеты npm с помощью ```npm i```
 3. Запустите проект командой ```npm run dev```
 
@@ -42,8 +42,8 @@
 
 ### Ссылки
 
-- [Ссылка на проект](https://github.com/klekwedge/snake)
-- [Деплой](https://klekwedge-snake.vercel.app/)
+- [Ссылка на проект](https://github.com/klekwedge/vk-test-2021)
+- [Деплой](https://klekwedge-vk-test-2021.vercel.app/)
 
 ## Мой процесс
 
