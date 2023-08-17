@@ -1,4 +1,4 @@
-import IEmojiGroup from '/src/types/types'
+import { IEmojiGroup } from "../../src/types/types";
 
 const emojiGroups: IEmojiGroup[] = [
   {

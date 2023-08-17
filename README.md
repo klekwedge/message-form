@@ -1,4 +1,4 @@
-# VKontakte - Intern in the team Web messenger
+# ВКонтакте - Стажер в команду Веб-мессенджер
 
 **You can also read this README in [English](https://github.com/klekwedge/snake/blob/main/README.EN.md).**
 

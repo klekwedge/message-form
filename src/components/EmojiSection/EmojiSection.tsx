@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { v4 as uuidv4 } from 'uuid';
 import "./EmojiSection.scss";
 

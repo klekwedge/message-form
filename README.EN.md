@@ -1,4 +1,4 @@
-# Example
+# VKontakte - Intern in the team Web messenger
 
 **Вы также можете прочитать этот README на [русском](https://github.com/klekwedge/example/blob/main/README.md)**
 
